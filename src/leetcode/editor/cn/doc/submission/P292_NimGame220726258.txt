@@ -1,0 +1,8 @@
+class Solution {
+public:
+    bool canWinNim(int n) {
+        return n%4;
+    }
+};
+//runtime:0 ms
+//memory:5.9 MB
