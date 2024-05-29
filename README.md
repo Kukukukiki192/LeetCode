@@ -50,9 +50,149 @@
 
 # [KamaCoder](https://kamacoder.com/)
 ## ACM模式IO练习
-7.avg_gpa  
+7.平均绩点
+
 [Java Map集合初始化并赋值](https://blog.csdn.net/AttleeTao/article/details/113546006?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522171695019916800215029053%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=171695019916800215029053&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-3-113546006-null-null.142^v100^pc_search_result_base6&utm_term=Java%20map%E8%B5%8B%E5%80%BC%E6%96%B9%E5%BC%8F&spm=1018.2226.3001.4187)  
+
 [Java输出多位小数（3种方法)](https://blog.csdn.net/weixin_74837727/article/details/130090751?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522171689698716800184122272%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=171689698716800184122272&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-130090751-null-null.142^v100^pc_search_result_base6&utm_term=java%E4%BF%9D%E7%95%99%E5%B0%8F%E6%95%B0%E7%82%B9%E5%90%8E%E4%B8%89%E4%BD%8D&spm=1018.2226.3001.4187)
+
+#### Map 初始化及赋值4种方法
+
+1. **使用 HashMap 构造器**
+
+    ```java
+    Map<String, Integer> map = new HashMap<>();
+    map.put("one", 1);
+    map.put("two", 2);
+    map.put("three", 3);
+    ```
+
+2. **使用静态初始化块（Java 8 新特性）**
+
+    通过创建一个匿名内部类，并在其中使用实例初始化块来添加键值对
+
+    ❗这种方法创建了一个匿名子类，可能会增加不必要的开销并且序列化行为可能会变得复杂，因此不推荐在性能关键的代码中使用
+
+    ```java
+    Map<String, Integer> map = new HashMap<String, Integer>() {{
+        put("one", 1);
+        put("two", 2);
+        put("three", 3);
+    }};
+    ```
+3. **使用 Map.of 和 Map.ofEntries（Java 9+）**
+
+    适合用于定义常量映射或在多线程环境中使用，创建的 Map 具有以下特点：
+
+    - 不可变：创建后不能修改（不能增删改条目）
+    - 不允许空键或空值：若尝试插入空键或空值，会抛出`NullPointerException`
+    - 防止重复键：若提供了重复的键，会抛出`IllegalArgumentException`
+
+    ```java
+    Map<String, Integer> map = Map.of(
+        "one", 1,
+        "two", 2,
+        "three", 3
+    );
+    Map<String, Integer> map = Map.ofEntries(
+         Map.entry("one", 1),
+         Map.entry("two", 2),
+         Map.entry("three", 3)
+     );
+    ```
+4. **使用 Guava 库**
+
+    > Guava是Google提供的一个Java核心工具库，包含了大量实用的工具类和方法
+
+    引入 Maven 依赖
+
+    ```xml
+    <dependency>
+    <groupId>com.google.guava</groupId>
+    <artifactId>guava</artifactId>
+    <version>31.1-jre</version> <!-- 请根据需要选择最新版本 -->
+    </dependency>
+    ```
+    ```java
+    import com.google.common.collect.ImmutableMap;
+    import com.google.common.collect.Maps;
+    import java.util.Map;
+    ...
+    // 使用Guava的ImmutableMap进行初始化
+    // 不可变 Map,适用于创建常量 Map
+    Map<String, Integer> immutableMap = ImmutableMap.of(
+    "one", 1,
+    "two", 2,
+    "three", 3
+    );
+    
+    // 使用Guava的ImmutableMap.Builder进行初始化
+    // 不可变 Map,适用于构建一个较大的 Map，或在运行时动态添加元素
+    Map<String, Integer> immutableMapWithBuilder = ImmutableMap.<String, Integer>builder()
+    .put("one", 1)
+    .put("two", 2)
+    .put("three", 3)
+    .build();
+    
+    // 使用Guava的Maps.newHashMap进行初始化
+    // 可变 Map
+    Map<String, Integer> mutableMap = Maps.newHashMap();
+    mutableMap.put("one", 1);
+    mutableMap.put("two", 2);
+    mutableMap.put("three", 3);
+    ```
+
+#### 输出多位小数
+
+1. **使用 String.format**
+
+    ```java
+    double v = 123.456789;
+    String s = String.format("%.2f", v); // 输出：123.46
+    ```
+
+2. **使用 printf**
+
+    ```java
+    System.out.printf("%.2f%n", v);
+    ```
+
+3. **使用 DecimalFormat**
+
+    DecimalFormat 是 NumberFormat 的一个具体子类，用于格式化十进制数字，主要靠 0 和 # 两个占位符号
+
+    ```java
+    import java.text.DecimalFormat;
+
+    DecimalFormat df = new DecimalFormat("#.##");
+    System.out.println(df.format(v));
+    ```
+
+4. **使用 BigDecimal**
+
+    ```java
+    import java.math.BigDecimal;
+    import java.math.RoundingMode;
+
+    BigDecimal bd = new BigDecimal(v);
+    bd = bd.setScale(2, RoundingMode.HALF_UP); // 设置小数位数为2，并四舍五入
+    ```
+
+5. **使用 NumberFormat**
+
+    ```java
+    import java.text.NumberFormat; // 是 DecimalFormat 的父类
+    
+    NumberFormat nf = NumberFormat.getNumberInstance();
+    nf.setMaximumFractionDigits(2);
+    nf.setMinimumFractionDigits(2);
+    System.out.println(nf.format(v));
+    ```
+
+
+
+
+
 
 
 ## 设计模式练习
