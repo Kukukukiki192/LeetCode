@@ -47,3 +47,12 @@
 [543. 二叉树的直径](https://leetcode.cn/problems/diameter-of-binary-tree/)
 
 [剑指 Offer 55 - I. 二叉树的深度](https://leetcode.cn/problems/er-cha-shu-de-shen-du-lcof/)
+
+# [KamaCoder](https://kamacoder.com/)
+## ACM模式IO练习
+7.avg_gpa  
+[Java Map集合初始化并赋值](https://blog.csdn.net/AttleeTao/article/details/113546006?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522171695019916800215029053%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=171695019916800215029053&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-3-113546006-null-null.142^v100^pc_search_result_base6&utm_term=Java%20map%E8%B5%8B%E5%80%BC%E6%96%B9%E5%BC%8F&spm=1018.2226.3001.4187)  
+[Java输出多位小数（3种方法)](https://blog.csdn.net/weixin_74837727/article/details/130090751?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522171689698716800184122272%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=171689698716800184122272&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-130090751-null-null.142^v100^pc_search_result_base6&utm_term=java%E4%BF%9D%E7%95%99%E5%B0%8F%E6%95%B0%E7%82%B9%E5%90%8E%E4%B8%89%E4%BD%8D&spm=1018.2226.3001.4187)
+
+
+## 设计模式练习
