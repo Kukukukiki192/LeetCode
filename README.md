@@ -188,8 +188,21 @@
     nf.setMinimumFractionDigits(2);
     System.out.println(nf.format(v));
     ```
-
-
+#### 类型转换
+char int
+0~9对应ASCII码48~57
+```java
+char c = '1';
+// 输出1的ASCII码49 因为Java把char字符当做ASCII码值来对待,所以char可以直接转成int
+int i = c;
+int i1 = (int)c;
+// 先转为String,再用Integer.parserInt()返回int类型值
+String strc = String.valueOf(c);
+int intc = Integer.parseInt(strc);
+// 利用封装类Character的静态方法
+int intc = Character.getNumericValue(numChar);
+```
+int_char_string三种类型的相互转换
 
 
 
