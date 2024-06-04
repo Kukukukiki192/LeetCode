@@ -8,7 +8,7 @@
 - 深度优先遍历 Depth First Search - **DFS** 
   - 前/中/后序遍历 代码执行顺序: 前序位置-自顶向下 后序位置-自底向上
 
-     <img src="C:\Users\K\AppData\Roaming\Typora\typora-user-images\image-20221202164754549.png" alt="image-20221202164754549" style="zoom:25%;" />
+     <img src="https://github.com/Kukukukiki192/TyporaImg/raw/main/img/lc1.png" style="zoom:35%;" />
 
 - 广度优先遍历 Breath First Search - **BFS**
 
@@ -50,11 +50,7 @@
 
 # [KamaCoder](https://kamacoder.com/)
 ## ACM模式IO练习
-7.平均绩点
-
-[Java Map集合初始化并赋值](https://blog.csdn.net/AttleeTao/article/details/113546006?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522171695019916800215029053%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=171695019916800215029053&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-3-113546006-null-null.142^v100^pc_search_result_base6&utm_term=Java%20map%E8%B5%8B%E5%80%BC%E6%96%B9%E5%BC%8F&spm=1018.2226.3001.4187)  
-
-[Java输出多位小数（3种方法)](https://blog.csdn.net/weixin_74837727/article/details/130090751?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522171689698716800184122272%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=171689698716800184122272&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-130090751-null-null.142^v100^pc_search_result_base6&utm_term=java%E4%BF%9D%E7%95%99%E5%B0%8F%E6%95%B0%E7%82%B9%E5%90%8E%E4%B8%89%E4%BD%8D&spm=1018.2226.3001.4187)
+[7.平均绩点](https://kamacoder.com/problempage.php?pid=1006)：
 
 #### Map 初始化及赋值4种方法
 
@@ -204,7 +200,20 @@ int intc = Character.getNumericValue(numChar);
 ```
 int_char_string三种类型的相互转换
 
+[14. 句子缩写](https://kamacoder.com/problempage.php?pid=1013)：
 
+#### next() nextInt() nextLine()  
+（在题目[提交记录](https://kamacoder.com/showsource.php?id=1535766)中）
+
+#### `\r \n` 回车 换行
+[\r\n和\n的区别 回车/换行 在不同系统下的区别](https://blog.csdn.net/m0_51233386/article/details/134153294)
+
+#### Java正则要两个斜杆
+普通程序中，即使是正则中，斜杠也就是斜杠
+
+但是java中，由于string的设计，导致斜杠是特殊的转义字符，所以在正则中，如果想要写普通的正则的转义，比如'\d'表示数字，则要写成'\\d'才可以
+
+所以就变成了：其他程序中的'\'，java中，都要变成'\\'
 
 
 
