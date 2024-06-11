@@ -1,4 +1,5 @@
 # LeetCode
+
 > 刷题参考《labuladong 的算法小抄》https://labuladong.github.io/algo/
 
 # :zero: 核心框架汇总​
@@ -214,6 +215,57 @@ int_char_string三种类型的相互转换
 但是java中，由于string的设计，导致斜杠是特殊的转义字符，所以在正则中，如果想要写普通的正则的转义，比如'\d'表示数字，则要写成'\\d'才可以
 
 所以就变成了：其他程序中的'\'，java中，都要变成'\\'
+
+[18. 链表的基本操作](https://kamacoder.com/problempage.php?pid=1017):
+
+#### 分离节点和链表逻辑
+
+**分离职责**：
+
+`Node` 类仅表示节点，`List` 类管理链表操作，职责清晰、单一
+
+**避免无限递归和循环引用**：
+
+直接在节点类中定义链表逻辑，容易导致循环引用或无限递归等问题. 例如，在节点构造函数中创建新的节点实例时，可能导致栈溢出错误. 将链表的操作逻辑分离出来，可以更好地控制和管理这些问题
+
+![](https://github.com/Kukukukiki192/TyporaImg/raw/main/img/lc2.png)
+
+如图，代码出现 `StackOverflowError` 报错是因为 `Node` 类中的 `dummyhead` 节点自身引用的循环问题. `dummyhead` 的初始化会触发新的 `Node` 实例的创建，从而形成无限递归，每一次递归调用都会在调用栈中增加一个新的帧，最终导致栈空间被耗尽. 构造函数只应该初始化节点的值和指向下一个节点的引用，而不应该创建新的节点
+
+修正：
+
+```java
+public class Node {
+    int val;
+    Node next;
+    Node() {}
+    Node(int val) {
+        this.val = val;
+    }
+    Node(int val, Node next) {
+        this.val = val;
+        this.next = next;
+    }
+}
+
+class List {
+    int size;
+    Node dummyhead;
+    List() {
+        size = 0;
+        dummyhead = new Node(-1, null);
+    }
+  //链表操作
+}
+```
+
+
+
+
+
+
+
+
 
 
 
