@@ -84,52 +84,43 @@ public class Main {
             }
             return sb.toString().trim();
         }
+
+        public void reverse() {
+            Node p = dummyhead.next;
+            if (p==null || p.next==null)return;
+            Stack<Integer> s = new Stack<>();
+            while (p.next != null) {
+                s.push(p.val);
+            }
+            while (!s.isEmpty()) {
+                Integer peek = s.peek();
+
+                
+            }
+
+        }
     }
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         LinkedList<Integer> list = new LinkedList<>(); //自带链表
 //        List list = new Main().new List(); //手写链表
-        int n = in.nextInt();
-        while (n-- > 0) {
-            int i = in.nextInt();
-            list.addFirst(i); //初始化链表 从头部插入
-        }
-        int m = in.nextInt();
-        while (m-- > 0) {
-            String s = in.next();
-            switch (s) {
-                case "get":
-                    try {
-                        int a = in.nextInt();
-                        System.out.println(list.get(a - 1));
-                    } catch (IndexOutOfBoundsException e) {
-                        System.out.println("get fail");
-                    }
-                    break;
-                case "delete":
-                    try {
-                        int a = in.nextInt();
-                        list.remove(a - 1);
-                        System.out.println("delete OK");
-                    } catch (IndexOutOfBoundsException e) {
-                        System.out.println("delete fail");
-                    }
-                    break;
-                case "insert":
-                    try {
-                        int a = in.nextInt();
-                        int e = in.nextInt();
-                        list.add(a - 1, e);
-                        System.out.println("insert OK");
-                    } catch (IndexOutOfBoundsException e) {
-                        System.out.println("insert fail");
-                    }
-                    break;
-                case "show":
-                    System.out.println(list.isEmpty() ? "Link list is empty" : list.toString());
-                    break;
+        while (true){
+            int n = in.nextInt();
+            if (n==0) {
+                System.out.println("list is empty");
+                break;
             }
+            while (n-- > 0) {
+                int i = in.nextInt();
+                list.addFirst(i); //初始化链表 从头部插入
+
+
+
+            }
+        }
+
+
         }
     }
 }
